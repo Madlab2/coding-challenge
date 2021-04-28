@@ -6,14 +6,15 @@ April 2021
 
 */
 
-#include "Menu.hpp"
+#include <memory>
+
+#include "IntentMenu.hpp"
 
 
 int main() {
 
-    Menu myMenu = Menu();
-
-    myMenu.run();
+    std::unique_ptr<Menu> myMenu = std::make_unique<IntentMenu>();
+    myMenu->run();
 
     return 0;
 }

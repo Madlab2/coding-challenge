@@ -6,7 +6,7 @@
 
 #include "gtest/gtest.h"
 
-#include "Menu.hpp"
+#include "IntentMenu.hpp"
 
 TEST (HeyMercedesCodingChallengeTestbench, checkTest) {
 

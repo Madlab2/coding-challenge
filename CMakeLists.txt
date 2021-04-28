@@ -21,9 +21,21 @@ include_directories(
 add_subdirectory(test)
 
 
+add_library(intent_lib INTERFACE)
+
+target_include_directories(intent_lib INTERFACE
+    include
+)
+
 #library that contains the src for the entire project
 add_library(CodingChallenge_lib STATIC
-    src/Menu.cpp
+    src/IntentMenu.cpp
+    src/IntentEstimator.cpp
+)
+
+
+target_link_libraries(CodingChallenge_lib
+    intent_lib
 )
 
 add_executable(main 
