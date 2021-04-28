@@ -29,10 +29,6 @@ class IntentMenu : public Menu {
         void setEstimator(std::unique_ptr<Estimator> specialEstimator);
 
     private:
-        //to make wait for std::cin() more efficient -> mutex/lock, .notify_one()
-        void sleep();
-
-        void wakeUp();
 
         std::unique_ptr<Estimator> estimator_;
     

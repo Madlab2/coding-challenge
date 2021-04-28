@@ -23,12 +23,16 @@ struct Intents {
             {" weather like today in ", DiscreteIntents::GET_WEATHER_CITY},
             {" weather today in ", DiscreteIntents::GET_WEATHER_CITY},
             {" weather like in ", DiscreteIntents::GET_WEATHER_CITY},
+            {" forecast in ", DiscreteIntents::GET_WEATHER_CITY},
+            {" forecast for ", DiscreteIntents::GET_WEATHER_CITY},
             {" weather in ", DiscreteIntents::GET_WEATHER_CITY},
             
 
             {"what is the weather like today?", DiscreteIntents::GET_WEATHER},
             {" weather like today?", DiscreteIntents::GET_WEATHER},
             {" weather today?", DiscreteIntents::GET_WEATHER},
+            {" weather going to be?", DiscreteIntents::GET_WEATHER},
+            {" weather going to be today?", DiscreteIntents::GET_WEATHER},
             {" weather?", DiscreteIntents::GET_WEATHER},
             {" weather!", DiscreteIntents::GET_WEATHER},
             {" weather.", DiscreteIntents::GET_WEATHER},
@@ -36,7 +40,8 @@ struct Intents {
             {"tell me an interesting fact.", DiscreteIntents::GET_FACT},
             {" an interesting fact", DiscreteIntents::GET_FACT},
             {" a fact", DiscreteIntents::GET_FACT},
-            };
+            {" something factful", DiscreteIntents::GET_FACT},
+        };
 
         //Maps the enum class elements to strings
         std::map<DiscreteIntents, std::string> DiscreteIntentToString {

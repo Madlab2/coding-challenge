@@ -21,6 +21,15 @@ std::string IntentEstimator::findBestEstimate(std::string input) {
         //check wether the input string contains an elemenent specified in the map of intents
         intentFraction = key.first;
 
+        //save index where correspondence has been found
+        //save Intent-kind as well
+        //after looping trhrough the map, pick the smallest index
+
+        //we choose this approach because of english scentence structure: Subject Verb Object.
+        //
+        //especially in spoken language, scentences are shorter and the main points are mentioned at the beginning.
+        //TODO: add paper for this
+        
         if(isAinB(intentFraction, input)) {
 
             discreteIntent = key.second;

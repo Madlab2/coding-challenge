@@ -13,8 +13,6 @@ IntentMenu::IntentMenu(std::unique_ptr<Estimator> specialEstimator) {
 
 }
 
-
-
 void IntentMenu::run() {
 
     std::string input;
@@ -43,15 +41,4 @@ void IntentMenu::run() {
 void IntentMenu::setEstimator(std::unique_ptr<Estimator> specialEstimator) {
     
     estimator_ = std::move(specialEstimator);
-}
-
-void IntentMenu::sleep() {
-    //TODO
-    
-}
-
-
-void IntentMenu::wakeUp() {
-    //TODO
-    
 }
