@@ -1,3 +1,10 @@
+/* 
+
+#HeyMercedes Coding Challenge
+Patrick Madlindl
+April 2021
+
+*/
 #include "IntentMenu.hpp"
 
 
@@ -18,9 +25,9 @@ void IntentMenu::run() {
     std::string input;
     std::string intent;
 
-    while(true) {
+    std::cout << "Enter a command below or 'exit':" << std::endl;
 
-        std::cout << "Enter a command below or 'exit':" << std::endl;
+    while(true) {
 
         std::getline(std::cin, input);
 

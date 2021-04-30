@@ -19,7 +19,9 @@ void createInputs(std::map<std::string, std::string> & inputs) {
   std::string wheather = "Intent: Get Weather";
   std::string cityWeather = "Intent: Get Weather City";
   std::string fact = "Intent: Get Fact";
+  std::string other = "No known intent.";
 
+  //some simple semantic variations of inputs with intents
   inputs = {
     {"What is the weather like today?", wheather},
     {"Tell me the weather!", wheather},
@@ -29,10 +31,20 @@ void createInputs(std::map<std::string, std::string> & inputs) {
     {"Tell me the weather in Amsterdam.", cityWeather},
     {"How is the the weather in Amsterdam at the moment?", cityWeather},
     {"What's the weather like in Berlin?", cityWeather},
+    {"The weather forecast for Berlin please.", cityWeather},
     {"Please tell me something factful.", fact},
     {"Tell an interesting fact!", fact},
     {"Please give me a fact on Mercedes-Benz.", fact},
-    {"Tell me an interesting fact.", fact}
+    {"Tell me an interesting fact.", fact},
+
+    //and now some silly border/edge cases. To be greatly enhanced if we wanted to be on the safe side.
+    
+    {"", other},  //an empty line(no input)
+    {"@@@{wef}", other}, //some strange signs...
+    {"___main___:", other},
+    {"ÄöÜü€^°°~~", other},
+    {"sudo shutdown", other},  //just do nothing...
+
   };
 
 }
@@ -44,12 +56,6 @@ TEST (IntentsTests, checkDiscreteIntentToString) {
   //Intents intents;
   //EXPECT_EQ((std::string) Intents.DiscreteIntentToString.at(DiscreteIntents::GET_WEATHER), (std::string) "Intent: Get Weather");
 
-
-}
-//TODO
-TEST (IntentsTests, checkTest2) {
-
-  EXPECT_EQ(true, true);
 
 }
 

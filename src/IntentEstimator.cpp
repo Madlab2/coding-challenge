@@ -1,6 +1,13 @@
+/* 
+
+#HeyMercedes Coding Challenge
+Patrick Madlindl
+April 2021
+
+*/
+
 #include "IntentEstimator.hpp"
 
-//Estimator::~Estimator() {}
 
 std::string IntentEstimator::findBestEstimate(std::string input) {
 
@@ -8,13 +15,13 @@ std::string IntentEstimator::findBestEstimate(std::string input) {
     DiscreteIntents discreteIntent;
     std::string estimatedIntent;
     
-    //input to lower case
+    //casts input to lower case
     std::transform(input.begin(), input.end(), input.begin(),
     [](unsigned char c){ return std::tolower(c); });
 
 
     //Initial value, changes in case we find a correspondance
-    estimatedIntent = intents_.DiscreteIntentToString.at(DiscreteIntents::ELSE);
+    estimatedIntent = intents_.DiscreteIntentMessage.at(DiscreteIntents::ELSE);
 
     for (auto key : intents_.intentMappings) {
         
@@ -26,15 +33,17 @@ std::string IntentEstimator::findBestEstimate(std::string input) {
         //after looping trhrough the map, pick the smallest index
 
         //we choose this approach because of english scentence structure: Subject Verb Object.
-        //
-        //especially in spoken language, scentences are shorter and the main points are mentioned at the beginning.
+        //Even more in spoken language, scentences are shorter and the main points are mentioned at the beginning.
         //TODO: add paper for this
         
+        //check whether the intentFraction is contained in the user-input. 
+        //If so, we can assign the input the corresponding (discrete) intent.
         if(isAinB(intentFraction, input)) {
 
             discreteIntent = key.second;
 
-            estimatedIntent = intents_.DiscreteIntentToString.at(discreteIntent);
+            //extract and save the output we want to show the user that corresponds to the discrete intent.
+            estimatedIntent = intents_.DiscreteIntentMessage.at(discreteIntent);
         }
     }
 
@@ -42,6 +51,7 @@ std::string IntentEstimator::findBestEstimate(std::string input) {
     
 }
 
+//helper function that checks whether a string A is contained in string B
 bool IntentEstimator::isAinB(std::string A, std::string B) {
 
     if(B.find(A) == std::string::npos)

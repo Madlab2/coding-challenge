@@ -1,3 +1,11 @@
+/* 
+
+#HeyMercedes Coding Challenge
+Patrick Madlindl
+April 2021
+
+*/
+
 #pragma once
 #include <string>
 
