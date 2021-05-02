@@ -10,7 +10,7 @@ April 2021
 
 #include <iostream>
 #include <string>
-#include <memory>
+#include <memory>       //for smart ptrs
 
 #include "IntentEstimator.hpp"
 

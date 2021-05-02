@@ -10,6 +10,7 @@ April 2021
 
 IntentMenu::IntentMenu() {
 
+    //default Estimator
     setEstimator(std::make_unique<IntentEstimator>());
     
 }
@@ -32,11 +33,12 @@ void IntentMenu::run() {
         std::getline(std::cin, input);
 
         if (input == "exit") {
+
             std::cout << "exiting.." << std::endl;
             break;
-        }
 
-        else {
+        } else {
+
             intent = estimator_->findBestEstimate(input);
             std::cout << intent << std::endl;
         }

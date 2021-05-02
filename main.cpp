@@ -6,7 +6,7 @@ April 2021
 
 */
 
-#include <memory>
+#include <memory>   //for smart ptrs
 
 #include "IntentMenu.hpp"
 

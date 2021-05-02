@@ -11,9 +11,8 @@
 #include "IntentMenu.hpp"
 
 
-//TODO: edge cases, strange symbols, "I'd like to have an interesting fact about the weather in Paris".
 
-
+//Also contains edge cases, strange symbols, and some tricky stuff such as "I'd like to have an interesting fact about the weather in Paris".
 void createInputs(std::map<std::string, std::string> & inputs) {
 
   std::string wheather = "Intent: Get Weather";
@@ -36,6 +35,8 @@ void createInputs(std::map<std::string, std::string> & inputs) {
     {"Tell an interesting fact!", fact},
     {"Please give me a fact on Mercedes-Benz.", fact},
     {"Tell me an interesting fact.", fact},
+    {"I'd like to have an interesting fact about the weather in Paris", fact},
+    {"Tell me a fact about the average weather forecast in European cities.", fact},
 
     //and now some silly border/edge cases. To be greatly enhanced if we wanted to be on the safe side.
     
@@ -49,49 +50,47 @@ void createInputs(std::map<std::string, std::string> & inputs) {
 
 }
 
-//TODo
+//checks that the mapping from enum class DiscreteIntents to the putput strings is correct
 TEST (IntentsTests, checkDiscreteIntentToString) {
 
-
-  //Intents intents;
-  //EXPECT_EQ((std::string) Intents.DiscreteIntentToString.at(DiscreteIntents::GET_WEATHER), (std::string) "Intent: Get Weather");
-
+  Intents intents;
+  EXPECT_EQ(intents.DiscreteIntentMessage.at(DiscreteIntents::GET_WEATHER), "Intent: Get Weather");
+  EXPECT_EQ(intents.DiscreteIntentMessage.at(DiscreteIntents::GET_WEATHER_CITY), "Intent: Get Weather City");
+  EXPECT_EQ(intents.DiscreteIntentMessage.at(DiscreteIntents::GET_FACT), "Intent: Get Fact");
+  EXPECT_EQ(intents.DiscreteIntentMessage.at(DiscreteIntents::ELSE), "No known intent.");
 
 }
 
+//Tests the IntentEstimator, using the inputs created in createInputs()
 TEST (EstimatorTests, testFindEstimate) {
 
-  std::string input = "Tell me a fact";
-  std::string expectedEstimate = "Intent: Get Fact";
-  IntentEstimator testEstimator = IntentEstimator();
+  auto testEstimator = std::make_unique<IntentEstimator>();
 
   std::map<std::string, std::string> testData;
   createInputs(testData);
 
   for (auto value : testData) {
 
-    if(testEstimator.findBestEstimate(value.first)!= value.second) {
-      std::cout << "[Value] " << value.first << ", " << value.second << std::endl;
-    }
-    EXPECT_EQ(testEstimator.findBestEstimate(value.first), value.second);
+    EXPECT_EQ(testEstimator->findBestEstimate(value.first), value.second);
 
   }
 
 }
 
-//TODO
-TEST (EstimatorTests, checkTest3) {
 
-  EXPECT_EQ(true, true);
+//Some kind of integration test (from user input to output message) would be great
+//Problem: without changing signature of intentMenu.run() function (optionally passing it intput string)
+//this will be hard
+//As Menu etc. is still very simple, I leave this out for the moment.
+/*
+TEST (HeyMercedesCodingChallengeTest, integrationTest) {
+
+  std::unique_ptr<IntentMenu> menu = std::make_unique<IntentMenu>(std::move(dummyEstimator));
+
+  //...
 
 }
-
-//TODO
-TEST (HeyMercedesCodingChallengeTest, checkTest4) {
-
-  EXPECT_EQ(true, true);
-
-}
+*/
 
 int main(int argc, char **argv) {
 

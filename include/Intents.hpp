@@ -10,12 +10,11 @@ April 2021
 
 #include <string>
 #include <map>
-#include <algorithm>
-#include <vector>
+#include <algorithm>    //for std::transform
 
 
 
-//The intent categories (called "discrete intents") for this specific problem
+//The intent categories (also called "discrete intents") for this specific problem
 enum class DiscreteIntents {
     GET_WEATHER,
     GET_WEATHER_CITY,
@@ -45,7 +44,7 @@ struct Intents {
             //and the specificity of each intent-fraction appearing in the input
             //(how "exact" or "general" is each and every intent-fraction).
 
-            //In extreme, this approach could be made ever finer until intent-fractions 
+            //Effectively, this approach could be made ever finer until intent-fractions 
             //consist of single words or very short word tuples only.
             
             //Another approach would be to use and train (difficult with such a narrow problem)
@@ -82,7 +81,7 @@ struct Intents {
             {" something factful", DiscreteIntents::GET_FACT},
         };
 
-        //Maps the enum class elements to strings
+        //Maps the enum class elements to actual strings the we use in the output
         std::map<DiscreteIntents, std::string> DiscreteIntentMessage {
             {DiscreteIntents::GET_WEATHER, "Intent: Get Weather"},
             {DiscreteIntents::GET_WEATHER_CITY, "Intent: Get Weather City"},

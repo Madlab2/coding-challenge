@@ -1,5 +1,5 @@
 
-#  CMake file for Tests of #HeyMErcedes Coding Challenge
+#  CMake file for Tests of #HeyMercedes Coding Challenge
 #  Author: Patrick Madlindl
 #  April 2021
 

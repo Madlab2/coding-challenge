@@ -5,7 +5,7 @@
 
 cmake_minimum_required(VERSION 3.10)
 
-project(CodingChallenge VERSION 0.0
+project(CodingChallenge VERSION 0.1.0
         DESCRIPTION "#HeyMercedes Coding Challenge by Patrick Madlindl"
         LANGUAGES CXX)
 
