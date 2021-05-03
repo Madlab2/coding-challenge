@@ -1,6 +1,6 @@
-## \#HeyMercedes Coding Challenge
+## Coding Challenge
 
-This is the solution proposed by Patrick Madlindl to the #HeyMercedes Coding Challenge.
+This is the solution proposed by PM to the Coding Challenge.
 
 See instructions below for building and starting the appplication.
 
